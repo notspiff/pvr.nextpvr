@@ -21,15 +21,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "platform/os.h"
-#include "platform/util/timeutils.h"
+#include "xbmc/os.h"
+#include "xbmc/util/timeutils.h"
 
 #include "client.h"
 #include "pvrclient-nextpvr.h"
 
 #include "md5.h"
 
-#include "tinyxml/tinyxml.h"
+#include "tinyxml.h"
 
 #if defined(TARGET_WINDOWS)
   #define atoll(S) _atoi64(S) 

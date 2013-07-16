@@ -11,6 +11,8 @@ ENABLE_LANGUAGE(CXX)
 
 OPTION(PACKAGE_ZIP "Package Zip file?" OFF)
 
+FIND_PACKAGE(TinyXML REQUIRED)
+
 IF(WIN32)
   SET(BINDING_FILE ${XBMC_BINDINGS}.zip)
   message (STATUS "downloading XBMC bindings: " ${BINDING_FILE})
@@ -30,6 +32,7 @@ ELSE(WIN32)
   FIND_PATH(XBMC_INCLUDE_DIR xbmc/xbmc_pvr_dll.h)
   FIND_PACKAGE(xbmcplatform REQUIRED)
   INCLUDE_DIRECTORIES(${xbmcplatform_INCLUDE_DIRS}
+                      ${TINYXML_INCLUDE_DIR}
                       ${XBMC_INCLUDE_DIR})
   ADD_DEFINITIONS(-DTARGET_LINUX)
 ENDIF(WIN32)
@@ -44,7 +47,8 @@ SET(SOURCES src/client.cpp
 
 ADD_LIBRARY(pvr.nextpvr ${SOURCES})
 IF(NOT WIN32)
-  TARGET_LINK_LIBRARIES(pvr.nextpvr ${xbmcplatform_LIBRARIES})
+  TARGET_LINK_LIBRARIES(pvr.nextpvr ${xbmcplatform_LIBRARIES}
+                                    ${TINYXML_LIBRARIES})
   set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "-s")
   set(CMAKE_MODULE_LINKER_FLAGS_RELEASE "-s")
 ENDIF(NOT WIN32)
