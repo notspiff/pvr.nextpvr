@@ -15,6 +15,7 @@ include_directories(${xbmcplatform_INCLUDE_DIRS}
                     ${XBMC_INCLUDE_DIR})
 
 set(NEXTPVR_SOURCES src/client.cpp
+                    src/DialogRecordPref.cpp
                     src/liveshift.cpp
                     src/md5.cpp
                     src/pvrclient-nextpvr.cpp

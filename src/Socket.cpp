@@ -454,7 +454,7 @@ int Socket::receive ( char* data, const unsigned int buffersize, const unsigned 
 }
 
 
-int Socket::recvfrom ( char* data, const int buffersize, const int minpacketsize, struct sockaddr* from, socklen_t* fromlen) const
+int Socket::recvfrom ( char* data, const int buffersize, struct sockaddr* from, socklen_t* fromlen) const
 {
   int status = ::recvfrom(_sd, data, buffersize, 0, from, fromlen);
 
@@ -658,7 +658,7 @@ void Socket::osCleanup()
   }
 }
 
-#elif defined TARGET_LINUX || defined TARGET_DARWIN
+#elif defined TARGET_LINUX || defined TARGET_DARWIN || defined TARGET_FREEBSD
 bool Socket::set_non_blocking ( const bool b )
 {
   int opts;
@@ -767,6 +767,6 @@ void Socket::osCleanup()
 {
   // Not needed for Linux
 }
-#endif //TARGET_WINDOWS || TARGET_LINUX || TARGET_DARWIN
+#endif //TARGET_WINDOWS || TARGET_LINUX || TARGET_DARWIN || TARGET_FREEBSD
 
 } //namespace NextPVR
