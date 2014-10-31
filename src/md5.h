@@ -22,7 +22,7 @@
 #ifndef _MD5_H_
 #define _MD5_H_ 1
 
-#include "xbmc/util/StdString.h"
+#include "kodi/util/StdString.h"
 
 
 struct MD5Context {

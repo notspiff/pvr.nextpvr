@@ -21,8 +21,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "xbmc/os.h"
-#include "xbmc/util/timeutils.h"
+#include "kodi/os.h"
+#include "kodi/util/timeutils.h"
 
 #include "client.h"
 #include "pvrclient-nextpvr.h"

@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "xbmc/libXBMC_addon.h"
+#include "kodi/libXBMC_addon.h"
 #include <string>
-#include "xbmc/os.h"
+#include "kodi/os.h"
 #include "client.h"
 #include "Socket.h"
 

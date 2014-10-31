@@ -23,9 +23,9 @@
 #ifndef LiveSlip_H
 #define LiveSlip_H
 
-#include "xbmc/libXBMC_addon.h"
+#include "kodi/libXBMC_addon.h"
 #include <string>
-#include "xbmc/os.h"
+#include "kodi/os.h"
 #include "Socket.h"
 
 class LiveShiftSource
