@@ -25,6 +25,9 @@ set(NEXTPVR_SOURCES src/client.cpp
 
 SET(DEPLIBS ${KODIPLATFORM_LIBRARIES}
             ${TINYXML_LIBRARIES})
+if(WIN32)
+  list(APPEND DEPLIBS ws2_32)
+endif()
 
 build_addon(pvr.nextpvr NEXTPVR DEPLIBS)
 
