@@ -569,7 +569,7 @@ PVR_ERROR cPVRClientNextPVR::GetChannels(ADDON_HANDLE handle, bool bRadio)
           }
         }
 
-        PVR_STRCPY(tag.strInputFormat, "video/x-mpegts");
+        PVR_STRCPY(tag.strInputFormat, "video/mp2t");
 
         // check if it's a radio channel
         tag.bIsRadio = false;
@@ -1370,11 +1370,14 @@ int cPVRClientNextPVR::ReadLiveStream(unsigned char *pBuffer, unsigned int iBuff
       }
 
       // is it taking too long?
-      if (read_timeouts > 100)
+      if (read_timeouts > 200)
       {
-        m_streamingclient->close();
+        char *str = XBMC->GetLocalizedString(30053);
         bufferMore = false;
-        XBMC->QueueNotification(QUEUE_ERROR, XBMC->GetLocalizedString(30053));
+        if (str != NULL)
+        {
+          XBMC->QueueNotification(QUEUE_ERROR, str);
+        }
         return -1;
       }
     }
@@ -1529,7 +1532,7 @@ bool cPVRClientNextPVR::OpenRecordingInternal(long long seekOffset)
 
   if (seekOffset != 0)
   {
-    sprintf(line, "Range: bytes=%lld-\r\n", seekOffset);
+    sprintf(line, "Range: bytes=%d-\r\n", seekOffset);
     m_streamingclient->send(line, strlen(line));
   }
 
